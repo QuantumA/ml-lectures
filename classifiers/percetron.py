@@ -4,6 +4,7 @@ import numpy as np
 class Perceptron:
     weights = None
     bias = None
+    errors = []
 
     def __init__(self, eta=0.01, random_state=1):
         self.eta = eta
@@ -15,12 +16,15 @@ class Perceptron:
         self.weights = initializer.normal(loc=0.0, scale=0.01, size=features.shape[1])
         self.bias = np.float_(0.)
 
-        update = None
         for epoch in range(epochs):
+            n_errors = 0
             for x_i, y_i in zip(features, labels):
                 update = (y_i - self.predict(features=x_i)) * self.eta
                 self.weights += update * x_i
                 self.bias += update
+
+                n_errors += int(update != 0)
+            self.errors.append(n_errors)
 
         return self
 
@@ -38,4 +42,3 @@ if __name__ == '__main__':
 
     ppn = Perceptron(eta=0.05, random_state=1)
     ppn.fit(X, y, epochs=50)
-
