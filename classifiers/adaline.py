@@ -5,8 +5,8 @@ from sklearn.datasets import make_classification
 from visual.tools import plot_decision_regions
 
 
-class Adaline:
-    """ADAptative LInear NEuron"""
+class AdalineGD:
+    """ADAptative LInear NEuron Gradient Descent"""
     weights = None
     bias = None
     losses = []
@@ -46,7 +46,7 @@ class Adaline:
 if __name__ == "__main__":
     X, y = make_classification(n_features=2, n_redundant=0, n_informative=1, n_clusters_per_class=1)
 
-    alne = Adaline(lr=0.05, random_state=1)
+    alne = AdalineGD(lr=0.05, random_state=1)
     alne.fit(X, y, epochs=500)
 
     fig = plot_decision_regions(X=X, y=y, classifier=alne)
