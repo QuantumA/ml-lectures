@@ -46,8 +46,16 @@ class AdalineGD:
 if __name__ == "__main__":
     X, y = make_classification(n_features=2, n_redundant=0, n_informative=1, n_clusters_per_class=1)
 
-    alne = AdalineGD(lr=0.05, random_state=1)
-    alne.fit(X, y, epochs=500)
+    alne = AdalineGD(lr=0.005, random_state=1)
+    alne.fit(X, y, epochs=15)
 
     fig = plot_decision_regions(X=X, y=y, classifier=alne)
     plt.title("Adaline")
+    plt.show()
+
+    plt.plot(range(1, len(alne.losses) + 1), alne.losses, marker='o')
+    plt.xlabel("Epochs")
+    plt.ylabel("Average loss")
+    plt.tight_layout()
+    plt.show()
+
