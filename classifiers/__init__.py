@@ -1,2 +1,3 @@
 from classifiers.percetron import Perceptron
-from classifiers.adaline import Adaline
+from classifiers.adaline import AdalineGD
+from classifiers.adaline_sgd import AdalineSGD

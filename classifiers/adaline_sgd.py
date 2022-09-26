@@ -7,15 +7,15 @@ from visual.tools import plot_decision_regions
 
 class AdalineSGD:
     """ADAptative LInear NEuron with Stochastic Gradient Descent"""
-    weights = None
-    bias = None
-    losses = []
 
     def __init__(self, lr=1e-2, random_state=1, shuffle=True):
         self.lr = lr
         self.random_state = random_state
         self.shuffle = shuffle
         self.w_initialized = False
+        self.weights = None
+        self.bias = None
+        self.losses = []
 
     def fit(self, features, target, epochs):
         self._weight_initializer(features.shape[1])
